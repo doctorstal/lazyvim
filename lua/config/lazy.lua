@@ -18,6 +18,14 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    { "folke/noice.nvim", enabled = false },
+    { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.lang.go" },
+    { import = "lazyvim.plugins.extras.lang.scala" },
+    { import = "lazyvim.plugins.extras.lang.yaml" },
+    { import = "lazyvim.plugins.extras.coding.mini-surround" },
+    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
+
     -- import/override with your plugins
     { import = "plugins" },
   },
