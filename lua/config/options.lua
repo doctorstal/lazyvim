@@ -7,3 +7,5 @@ LazyVim.config.colorscheme = "retrobox"
 vim.g.snacks_animate = false
 vim.opt.relativenumber = false
 vim.opt.wildmode = "longest,list,full"
+vim.opt.title = true
+vim.opt.titlestring = "%{getcwd()}"
