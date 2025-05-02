@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd({ "FocusLost", "TextChanged" }, {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("filetype_scala", { clear = true }),
-  pattern = { "scala", "sbt" },
+  pattern = { "scala", "sbt", "yaml", "yml" },
   callback = function()
     vim.b.autoformat = false
   end,
