@@ -24,4 +24,26 @@ return {
       },
     },
   },
+  {
+    "neovim/nvim-dap",
+    opts = function()
+      local dap = require("dap")
+      if not dap.adapters["sbt"] then
+        require("dap").adapters["sbt"] = {
+          type = "server",
+          host = "localhost",
+          port = "5005",
+          executable = {
+            command = "sbt",
+            args = {
+              "runLocally",
+            },
+          },
+          options = {
+            initialize_timeout_sec = 30,
+          },
+        }
+      end
+    end,
+  },
 }

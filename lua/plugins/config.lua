@@ -9,8 +9,10 @@ return {
       colorscheme = "gruvbox",
     },
   },
-
-
+  {
+    "echasnovski/mini.pairs",
+    enabled = false,
+  },
   {
     "neovim/nvim-lspconfig",
 
