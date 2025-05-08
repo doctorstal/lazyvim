@@ -29,20 +29,24 @@ return {
     opts = function()
       local dap = require("dap")
       if not dap.adapters["sbt"] then
-        require("dap").adapters["sbt"] = {
-          type = "server",
-          host = "localhost",
-          port = "5005",
-          executable = {
-            command = "sbt",
-            args = {
-              "runLocally",
+        require("dap").adapters["sbt"] = function(cb, config)
+          local adapter = {
+            type = "server",
+            host = "127.0.0.1",
+            port = config.port,
+            executable = {
+              command = "sbt",
+              args = {
+                "-jvm-debug " .. config.port,
+                config.sbt.task,
+              },
             },
-          },
-          options = {
-            initialize_timeout_sec = 30,
-          },
-        }
+            options = {
+              initialize_timeout_sec = 30,
+            },
+          }
+          cb(adapter)
+        end
       end
     end,
   },
