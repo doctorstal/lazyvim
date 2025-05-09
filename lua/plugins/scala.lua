@@ -25,7 +25,7 @@ return {
     },
   },
   {
-    "neovim/nvim-dap",
+    "mfussenegger/nvim-dap",
     opts = function()
       local dap = require("dap")
       if not dap.adapters["sbt"] then
