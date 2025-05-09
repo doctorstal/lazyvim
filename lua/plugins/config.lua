@@ -14,6 +14,12 @@ return {
     enabled = false,
   },
   {
+    "Akzestia/nvim-cql",
+    config = true,
+    ft = "cql",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+  {
     "neovim/nvim-lspconfig",
 
     opts = {
