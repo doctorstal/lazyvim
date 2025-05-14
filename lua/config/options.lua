@@ -8,4 +8,4 @@ vim.g.snacks_animate = false
 vim.opt.relativenumber = false
 vim.opt.wildmode = "longest,list,full"
 vim.opt.title = true
-vim.opt.titlestring = "%{getcwd()}"
+vim.opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
