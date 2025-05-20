@@ -10,6 +10,28 @@ return {
     },
   },
   {
+    "folke/ts-comments.nvim",
+    opts = {
+      lang = {
+        cql = "-- %s",
+      },
+    },
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters = {
+        markdownlint = {
+          args = { "--disable", "MD013", "--" },
+        },
+      },
+      linters_by_ft = {
+        markdown = {},
+      },
+    },
+  },
+  {
     "echasnovski/mini.pairs",
     enabled = false,
   },
