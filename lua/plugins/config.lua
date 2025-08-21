@@ -17,7 +17,8 @@ return {
       },
     },
   },
-
+  { "yioneko/nvim-type-fmt" },
+  { "gurpreetatwal/vim-avro" },
   {
     "mfussenegger/nvim-lint",
     opts = {
