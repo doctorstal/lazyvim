@@ -10,3 +10,12 @@ vim.keymap.set("i", "<C-d>", '<C-o>"0dd', { noremap = true })
 -- insert in visual mode without overriding default register, i.e. multi-paste
 vim.keymap.set("v", "<leader>p", '"0p', { noremap = true })
 vim.keymap.set("v", "<leader>d", '"0d', { noremap = true })
+
+-- floating terminal
+vim.keymap.set("n", "<c-/>", function()
+  Snacks.terminal()
+end, { desc = "Terminal (cwd)" })
+
+vim.keymap.set("n", "<c-m-/>", function()
+  Snacks.terminal(nil, { cwd = LazyVim.root() })
+end, { desc = "Terminal (Root Dir)" })
