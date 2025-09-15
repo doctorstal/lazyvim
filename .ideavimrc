@@ -2,7 +2,7 @@
 "   the same commands as the original .vimrc configuration.
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
-
+nnoremap <SPACE> <Nop>
 let mapleader=" "
 set clipboard+=unnamed
 
@@ -27,19 +27,27 @@ nmap H <Action>(PreviousTab)
 nmap [d <Action>(GotoPreviousError)
 nmap ]d <Action>(GotoNextError)
 nmap ]h <Action>(NextChange)
-noremap <leader>sd <Action>(ActivateProblemsViewToolWindow)
+noremap <leader>sd :action ActivateProblemsViewToolWindow<CR>
 
 noremap <Leader><Leader> :action SearchEverywhere<CR>
+noremap <Leader>/ :action FindInPath<CR>
 
-" Does not work
-map gx <Action>(OpenInBrowser)
+" Does not work, gd on urls instead
+nmap gx <Action>(OpenInBrowser)
 
 nmap <leader>ca <Action>(ShowIntentionActions)
 nmap <leader>cr <Action>(RenameElement)
 nmap gr <Action>(FindUsages)
-nmap <Esc><Esc> <Action>(HideAllWindows)
+nmap gI <Action>(GotoImplementation 
+nmap <Esc>q <Action>(HideAllWindows)
 nmap <leader>e <Action>(SelectInProjectView)
-map <leader>ss <Action>(FileStructurePopup)
+nmap <leader>ss <Action>(FileStructurePopup)
+
+" Select word
+nmap <C-space> <Action>(EditorSelectWord)
+vmap <C-space> <Action>(EditorSelectWord)
+vmap <Backspace> <Action>(EditorUnSelectWord)
+
 
 " Git
 nmap <leader>gg <Action>(Git.MainMenu)
@@ -63,6 +71,10 @@ set functiontextobj
 
 " NERDTree file explorer
 set NERDTree
+
+" Which key
+set which-key
+set notimeout
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
