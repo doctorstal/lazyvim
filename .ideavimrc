@@ -5,6 +5,10 @@
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 set clipboard+=unnamed
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
@@ -26,20 +30,69 @@ nmap H <Action>(PreviousTab)
 " Navigation
 nmap [d <Action>(GotoPreviousError)
 nmap ]d <Action>(GotoNextError)
-nmap ]h <Action>(NextChange)
+nmap ]h <Action>(VcsShowNextChangeMarker)
+nmap [h <Action>(VcsShowPrevChangeMarker)
+nnoremap ]<Space> m`o<Esc>``
+nnoremap [<Space> m`O<Esc>``
+
+" Jump between methods
+nnoremap [[ <Action>(MethodUp)
+nnoremap ]] <Action>(MethodDown)
+" Pane navigation
+nnoremap <A-h> <C-w>h
+nnoremap <A-l> <C-w>l
+nnoremap <A-k> <C-w>k
+nnoremap <A-j> <C-w>j
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
 noremap <leader>sd :action ActivateProblemsViewToolWindow<CR>
 
-noremap <Leader><Leader> :action SearchEverywhere<CR>
+nnoremap <leader>fc :e /Users/oleksiistadnyk/.config/nvim/.ideavimrc<CR>
+nmap <leader>fr <Action>(IdeaVim.ReloadVimRc.reload)
+
+
+noremap <Leader><Leader> :action GotoFile<CR>
 noremap <Leader>/ :action FindInPath<CR>
+map <leader>fr <action>(RecentFiles)
+
+" Actions
+map <leader>am <action>(ShowIntentionActions)
+map <leader>as <action>(SearchEverywhere)
+
+" UI
+map <leader>uw <action>(EditorToggleUseSoftWraps)
+map <leader>ud <action>(ToggleDistractionFreeMode)
+map <leader>uz <action>(ToggleZenMode)
+map <leader>uf <action>(ToggleFullScreen)
 
 " Does not work, gd on urls instead
 nmap gx <Action>(OpenInBrowser)
 
+nmap gcc <Action>(CommentByLineComment)
+
 nmap <leader>ca <Action>(ShowIntentionActions)
+vmap <leader>ca <Action>(ShowIntentionActions)
 nmap <leader>cr <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+" Navigation
 nmap gr <Action>(FindUsages)
-nmap gI <Action>(GotoImplementation 
-nmap <Esc>q <Action>(HideAllWindows)
+nmap gI <Action>(GotoImplementation)
+nnnmap gy <Action>(GotoTypeDeclaration)
+nmap gu <Action>(ShowUsages)
+nmap gt <Action>(GotoTest)oremap <c-p> :action JumpToLastWindow<CR>
+
+" Jump around with easymotion
+map <leader>j <Plug>(easymotion-s)
+
+nnoremap <c-x> :action HideAllWindows<CR>
 nmap <leader>e <Action>(SelectInProjectView)
 nmap <leader>ss <Action>(FileStructurePopup)
 
@@ -48,9 +101,18 @@ nmap <C-space> <Action>(EditorSelectWord)
 vmap <C-space> <Action>(EditorSelectWord)
 vmap <Backspace> <Action>(EditorUnSelectWord)
 
+" Move lines
+nmap <A-j> <Action>(MoveLineDown)
+nmap <A-k> <Action>(MoveLineUp)
+vmap <A-j> <Action>(MoveLineDown)
+vmap <A-k> <Action>(MoveLineUp)
+
+" Run/Debug
+
+nmap <leader>da <Action>(ChooseDebugConfiguration)
 
 " Git
-nmap <leader>gg <Action>(Git.MainMenu)
+nmap <leader>gg <Action>(TUILauncher.lazygit)
 nmap <leader>ghr <Action>(Vcs.RollbackChangedLines)
 nmap <leader>ghp <Action>(Vcs.ShowDiffChangedLines)
 
@@ -75,6 +137,12 @@ set NERDTree
 " Which key
 set which-key
 set notimeout
+
+" surround
+set surround
+set highlightedyank
+set easymotion
+
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
