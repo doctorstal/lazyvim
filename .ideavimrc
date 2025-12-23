@@ -56,6 +56,8 @@ nmap <leader>fr <Action>(IdeaVim.ReloadVimRc.reload)
 
 noremap <Leader><Leader> :action GotoFile<CR>
 noremap <Leader>/ :action FindInPath<CR>
+nnoremap <leader>sw viw:action FindInPath<CR>
+vnoremap <leader>sw :action FindInPath<CR>
 map <leader>fr <action>(RecentFiles)
 
 " Actions
@@ -85,16 +87,23 @@ map <leader>rr <Action>(Refactorings.QuickListPopupAction)
 " Navigation
 nmap gr <Action>(FindUsages)
 nmap gI <Action>(GotoImplementation)
-nnnmap gy <Action>(GotoTypeDeclaration)
+nmap gy <Action>(GotoTypeDeclaration)
 nmap gu <Action>(ShowUsages)
 nmap gt <Action>(GotoTest)oremap <c-p> :action JumpToLastWindow<CR>
 
 " Jump around with easymotion
 map <leader>j <Plug>(easymotion-s)
 
-nnoremap <c-x> :action HideAllWindows<CR>
+nnoremap <esc> :action HideAllWindows<CR>
 nmap <leader>e <Action>(SelectInProjectView)
-nmap <leader>ss <Action>(FileStructurePopup)
+map <leader>r :NERDTreeFocus<CR>
+map <leader>ss <Action>(FileStructurePopup)
+
+" copy and paste
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>P "0p
+vnoremap Y "+y
 
 " Select word
 nmap <C-space> <Action>(EditorSelectWord)
@@ -113,6 +122,7 @@ nmap <leader>da <Action>(ChooseDebugConfiguration)
 
 " Git
 nmap <leader>gg <Action>(TUILauncher.lazygit)
+nmap <leader>gB <Action>(Github.Open.In.Browser)
 nmap <leader>ghr <Action>(Vcs.RollbackChangedLines)
 nmap <leader>ghp <Action>(Vcs.ShowDiffChangedLines)
 
@@ -133,6 +143,14 @@ set functiontextobj
 
 " NERDTree file explorer
 set NERDTree
+
+let g:NERDTreeMapCloseDir = 'h'
+let g:NERDTreeMapActivateNode = 'l'
+let g:NERDTreeMapOpenRecursively = 'L'
+let g:NERDTreeMapJumpNextSibling = 'J'
+let g:NERDTreeMapJumpPrevSibling = 'K'
+let g:NERDTreeMapPreview = 'p'
+let g:NERDTreeMapNewFile = 'a'
 
 " Which key
 set which-key
