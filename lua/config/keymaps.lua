@@ -13,13 +13,13 @@ vim.keymap.set("v", "<leader>d", '"0d', { noremap = true })
 
 -- floating terminal
 vim.keymap.set("n", "<c-/>", function()
-  Snacks.terminal(nil, { auto_insert = false, win = { keys = { term_normal = false } } })
+  Snacks.terminal(nil, { auto_insert = false, start_insert = false, win = { keys = { term_normal = false } } })
 end, { desc = "Terminal (cwd)" })
 
 vim.keymap.set("n", "<c-m-/>", function()
   Snacks.terminal(
     nil,
-    { cwd = LazyVim.root(), auto_insert = false, start_insert = true, win = { keys = { term_normal = false } } }
+    { cwd = LazyVim.root(), auto_insert = false, start_insert = false, win = { keys = { term_normal = false } } }
   )
 end, { desc = "Terminal (Root Dir)" })
 
