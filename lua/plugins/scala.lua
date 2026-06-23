@@ -1,5 +1,10 @@
 return {
   {
+    -- Restrict metals to Scala only; Java is handled by jdtls (lazyvim.plugins.extras.lang.java)
+    "scalameta/nvim-metals",
+    ft = { "scala", "sbt" },
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = {
       setup = {
