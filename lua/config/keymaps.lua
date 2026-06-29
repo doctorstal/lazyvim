@@ -13,29 +13,21 @@ vim.keymap.set("v", "<leader>d", '"0d', { noremap = true })
 
 -- floating terminal
 vim.keymap.set("n", "<c-/>", function()
-  Snacks.terminal(nil, { auto_insert = false, start_insert = false, win = { keys = { term_normal = false } } })
+  Snacks.terminal(nil, { auto_insert = false, start_insert = false })
 end, { desc = "Terminal (cwd)" })
 
 vim.keymap.set("n", "<c-m-/>", function()
-  Snacks.terminal(
-    nil,
-    { cwd = LazyVim.root(), auto_insert = false, start_insert = false, win = { keys = { term_normal = false } } }
-  )
+  Snacks.terminal(nil, { cwd = LazyVim.root(), auto_insert = false, start_insert = false })
 end, { desc = "Terminal (Root Dir)" })
 
 -- dedicated Copilot CLI terminal (right split, Esc passes through to copilot process)
 vim.keymap.set("n", "<leader>ac", function()
-  Snacks.terminal("copilot", {
-    id = "copilot",
+  Snacks.terminal("claude", {
+    id = "claude",
     win = {
       type = "split",
       position = "right",
       width = 0.4,
-      keys = {
-        -- disable default <Esc> → normal-mode mapping so Esc reaches the copilot process
-        -- use <C-\><C-n> to enter normal mode for scrolling, then i/a to resume
-        term_normal = false,
-      },
     },
   })
-end, { desc = "Copilot CLI Terminal" })
+end, { desc = "Claude Code Terminal" })
