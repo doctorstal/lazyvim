@@ -19,15 +19,3 @@ end, { desc = "Terminal (cwd)" })
 vim.keymap.set("n", "<c-m-/>", function()
   Snacks.terminal(nil, { cwd = LazyVim.root(), auto_insert = false, start_insert = false })
 end, { desc = "Terminal (Root Dir)" })
-
--- dedicated Copilot CLI terminal (right split, Esc passes through to copilot process)
-vim.keymap.set("n", "<leader>ac", function()
-  Snacks.terminal("claude", {
-    id = "claude",
-    win = {
-      type = "split",
-      position = "right",
-      width = 0.4,
-    },
-  })
-end, { desc = "Claude Code Terminal" })
